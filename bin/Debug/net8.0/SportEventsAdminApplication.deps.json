@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "SportEventsAdminApplication/1.0.0": {
+        "runtime": {
+          "SportEventsAdminApplication.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SportEventsAdminApplication/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
