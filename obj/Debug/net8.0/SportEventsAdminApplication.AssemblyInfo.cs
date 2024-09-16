@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SportEventsAdminApplication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cdef22218a01ff31c3ab1569a71b67ede84a0336")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cd15afa34d36e56be1488b71be6bd83f524e037")]
 [assembly: System.Reflection.AssemblyProductAttribute("SportEventsAdminApplication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SportEventsAdminApplication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

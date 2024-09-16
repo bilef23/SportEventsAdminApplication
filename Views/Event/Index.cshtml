@@ -1,30 +1,51 @@
 @model IEnumerable<SportEventsAdminApplication.Models.Domain.Event>
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+ViewData["Title"] = "Index";
+Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<p>
-</p>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+<style>
+    thead {
+        background: #5F6F65;
+        color: #e1e8d7;
+        font-size: 1.2rem;
+    }
+    tbody tr {
+        color: #5F6F65;
+        font-size: 1.1rem;
+    }
+    .btn-custom {
+        color: #5F6F65;
+        border-color: #5F6F65;
+    }
+    .btn-custom:hover {
+        background-color: #5F6F65;
+        color: #fff;
+    }
+</style>
+<h2 class="text-center my-4" style="color: #5F6F65;font-weight: bold">Event List</h2>
+
 <div class="container py-4">
-    <h5 style="color: #17a2b8;">Import events from excel file:</h5>
+    <h5 style="color: #5F6F65;">Import events from Excel file:</h5>
 
     <form asp-action="ImportEvents" asp-controller="Event" enctype="multipart/form-data" method="post">
         <div class="form-group">
             <label for="file">Select Excel File:</label>
             <input type="file" name="file" class="form-control-sm" required />
-            
         </div>
         <button type="submit" class="btn btn-outline-light small">Upload</button>
     </form>
 </div>
-<div class="container py-4">
-    <h5 style="color: #17a2b8;">Or you can create new one via form: <a class="btn btn-outline-light small"asp-action="Create">Create New</a></h5>    
+
+<div class="container py-2">
+    <h5 style="color: #5F6F65;">Or you can create a new event using this form: <a class="btn btn-outline-light small" asp-action="Create">Create New</a></h5>
 </div>
+
 <div class="container py-4">
     <div class="table-responsive">
-        <table class="table ">
-            <thead style="background-color: #17a2b8;">
+        <table class="table">
+            <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
@@ -48,7 +69,7 @@
                     @Html.DisplayNameFor(model => model.Organizer)
                 </th>
                 <th>
-                    NumberOfRegistrations
+                    Number of Registrations
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.MaximumRegistrations)
@@ -67,7 +88,7 @@
             </thead>
             <tbody>
             @foreach (var item in Model) {
-            <tr class="text-light">
+            <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -102,17 +123,15 @@
                     @Html.DisplayFor(modelItem => item.OpenForRegistrations)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EventPrice)
+                    @Html.DisplayFor(modelItem => item.EventPrice)MKD
                 </td>
-                <td >
-                    <a class="btn btn-outline-light"  asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                    <a class="btn btn-outline-light"  asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <td>
+                    <a class="btn btn-custom btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-custom btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
             }
             </tbody>
         </table>
-
     </div>
-
 </div>
