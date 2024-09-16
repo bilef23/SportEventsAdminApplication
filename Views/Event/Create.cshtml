@@ -1,0 +1,113 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using SportEvents.Enum
+@model SportEventsAdminApplication.Models.Domain.Event
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Event</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control"/>
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventType" class="control-label"></label>
+                @Html.DropDownListFor(
+                    m => m.EventType,
+                    new SelectList(Enum.GetValues(typeof(EventType))),
+                    "Select Event Type",
+                    new { @class = "form-control" }
+                )
+                <span asp-validation-for="EventType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaximumRegistrations" class="control-label"></label>
+                <input asp-for="MaximumRegistrations" class="form-control" />
+                <span asp-validation-for="MaximumRegistrations" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventPrice" class="control-label"></label>
+                <input asp-for="EventPrice" class="form-control" />
+                <span asp-validation-for="EventPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaximumCapacityEvent" class="control-label"></label>
+                <input asp-for="MaximumCapacityEvent" class="form-control" />
+                <span asp-validation-for="MaximumCapacityEvent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpenForRegistrations" class="control-label"></label>
+                <input asp-for="OpenForRegistrations" class="form-check-input" />
+                <span asp-validation-for="OpenForRegistrations"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrganizerId" class="control-label"></label>
+                <select asp-for="OrganizerId" class ="form-control" asp-items="ViewBag.OrganizerId"></select>
+            </div>
+            <h2>If the organizer is not on the list create new one:</h2>
+            <div class="form-group">
+                <label asp-for="Organizer.Name" class="control-label"></label>
+                <input asp-for="Organizer.Name" class="form-control" val />
+                <span asp-validation-for="Organizer.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Organizer.ContactEmail" class="control-label"></label>
+                <input asp-for="Organizer.ContactEmail" class="form-control" />
+                <span asp-validation-for="Organizer.ContactEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Organizer.Address" class="control-label"></label>
+                <input asp-for="Organizer.Address" class="form-control" />
+                <span asp-validation-for="Organizer.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Organizer.ContactPhone" class="control-label"></label>
+                <input asp-for="Organizer.ContactPhone" class="form-control" />
+                <span asp-validation-for="Organizer.ContactPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

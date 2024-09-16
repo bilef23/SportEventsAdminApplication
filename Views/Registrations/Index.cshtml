@@ -1,0 +1,61 @@
+@model IEnumerable<SportEventsAdminApplication.Models.Domain.Registration>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Participant)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Participant.Email)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @if (@item.Status.ToString() == "Pending")
+                {
+                    <a asp-action="ApproveRegistration" asp-route-id="@item.Id">Approve</a>
+                    <a asp-action="RejectRegistration" asp-route-id="@item.Id">Reject</a>
+                }
+                else
+                {
+                <span class="text-muted">@item.Status.ToString()</span>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
