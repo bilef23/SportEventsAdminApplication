@@ -5,13 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1 class="py-4" style="color: #17a2b8; ">All registrations</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table py-4">
+    <thead style="background-color: #17a2b8;">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.RegistrationDate)
@@ -30,7 +27,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr class="text-light">
             <td>
                 @Html.DisplayFor(modelItem => item.RegistrationDate)
             </td>
@@ -44,11 +41,11 @@
                 @Html.DisplayFor(modelItem => item.Participant.Email)
             </td>
             <td>
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn btn-outline-light" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 @if (@item.Status.ToString() == "Pending")
                 {
-                    <a asp-action="ApproveRegistration" asp-route-id="@item.Id">Approve</a>
-                    <a asp-action="RejectRegistration" asp-route-id="@item.Id">Reject</a>
+                    <a class="btn btn-outline-light" asp-action="ApproveRegistration" asp-route-id="@item.Id">Approve</a>
+                    <a class="btn btn-outline-light" asp-action="RejectRegistration" asp-route-id="@item.Id">Reject</a>
                 }
                 else
                 {

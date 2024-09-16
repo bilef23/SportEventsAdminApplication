@@ -9,8 +9,18 @@
     <link rel="stylesheet" href="~/SportEventsAdminApplication.styles.css" asp-append-version="true"/>
 </head>
 <body>
+<style>
+    body {
+        /* Background styling */
+        background: linear-gradient(to right, #5b6265, #1a1a1a); /* Dark gradient background */
+        /* Ensure text color contrasts with background */
+    }
+    nav{
+        background: linear-gradient(to right, #298d9f, #5a5858);
+    }
+</style>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white  box-shadow mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SportEventsAdminApplication</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -39,11 +49,7 @@
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2024 - SportEventsAdminApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-</footer>
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>

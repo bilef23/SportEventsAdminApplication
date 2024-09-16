@@ -3,49 +3,52 @@
 @model SportEventsAdminApplication.Models.Domain.Event
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+ViewData["Title"] = "Edit";
+Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<h1 class="text-center mb-4">Edit Event</h1>
 
-<h4>Event</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <form asp-action="Edit" class="shadow p-4 rounded">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <!-- Hidden field for the ID -->
             <input asp-for="Id" type="hidden" />
 
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="form-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="Location" class="form-label"></label>
                 <input asp-for="Location" class="form-control" />
                 <span asp-validation-for="Location" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", type = "datetime" } })
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group">
-                <@Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "datetime" } })
-                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+
+            <div class="form-group mb-3">
+                @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "form-label" })
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group">
-                <label asp-for="EventType" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="EventType" class="form-label"></label>
                 @Html.DropDownListFor(
                 m => m.EventType,
                 new SelectList(Enum.GetValues(typeof(EventType))),
@@ -54,65 +57,71 @@
                 )
                 <span asp-validation-for="EventType" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="ImageUrl" class="form-label"></label>
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="MaximumRegistrations" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="MaximumRegistrations" class="form-label"></label>
                 <input asp-for="MaximumRegistrations" class="form-control" />
                 <span asp-validation-for="MaximumRegistrations" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="EventPrice" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="EventPrice" class="form-label"></label>
                 <input asp-for="EventPrice" class="form-control" />
                 <span asp-validation-for="EventPrice" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="MaximumCapacityEvent" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="MaximumCapacityEvent" class="form-label"></label>
                 <input asp-for="MaximumCapacityEvent" class="form-control" />
                 <span asp-validation-for="MaximumCapacityEvent" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="OpenForRegistrations" class="control-label"></label>
+
+            <div class="form-check mb-3">
                 <input asp-for="OpenForRegistrations" class="form-check-input" />
+                <label asp-for="OpenForRegistrations" class="form-check-label"></label>
                 <span asp-validation-for="OpenForRegistrations" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="OrganizerId" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="OrganizerId" class="form-label"></label>
                 <select asp-for="OrganizerId" class="form-control" asp-items="ViewBag.OrganizerId"></select>
             </div>
-            <h2>If the organizer is not on the list create a new one:</h2>
-            <div class="form-group">
-                <label asp-for="Organizer.Name" class="control-label"></label>
+
+            <h5 class="text-muted">If the organizer is not on the list, create a new one:</h5>
+            <div class="form-group mb-3">
+                <label asp-for="Organizer.Name" class="form-label"></label>
                 <input asp-for="Organizer.Name" class="form-control" />
                 <span asp-validation-for="Organizer.Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Organizer.ContactEmail" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="Organizer.ContactEmail" class="form-label"></label>
                 <input asp-for="Organizer.ContactEmail" class="form-control" />
                 <span asp-validation-for="Organizer.ContactEmail" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Organizer.Address" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="Organizer.Address" class="form-label"></label>
                 <input asp-for="Organizer.Address" class="form-control" />
                 <span asp-validation-for="Organizer.Address" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Organizer.ContactPhone" class="control-label"></label>
+
+            <div class="form-group mb-3">
+                <label asp-for="Organizer.ContactPhone" class="form-label"></label>
                 <input asp-for="Organizer.ContactPhone" class="form-control" />
                 <span asp-validation-for="Organizer.ContactPhone" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group text-center">
                 <input type="submit" value="Save Changes" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
             </div>
         </form>
     </div>
 </div>
-
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

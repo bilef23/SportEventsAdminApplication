@@ -4,109 +4,115 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Index</h1>
-
 <p>
-    <a asp-action="Create">Create New</a>
 </p>
-<h1>Import events from excel file</h1>
+<div class="container py-4">
+    <h5 style="color: #17a2b8;">Import events from excel file:</h5>
 
-<form asp-action="ImportEvents" asp-controller="Event" enctype="multipart/form-data" method="post">
-    <div class="form-group">
-        <label for="file">Select Excel File:</label>
-        <input type="file" name="file" class="form-control" required />
+    <form asp-action="ImportEvents" asp-controller="Event" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+            <label for="file">Select Excel File:</label>
+            <input type="file" name="file" class="form-control-sm" required />
+            
+        </div>
+        <button type="submit" class="btn btn-outline-light small">Upload</button>
+    </form>
+</div>
+<div class="container py-4">
+    <h5 style="color: #17a2b8;">Or you can create new one via form: <a class="btn btn-outline-light small"asp-action="Create">Create New</a></h5>    
+</div>
+<div class="container py-4">
+    <div class="table-responsive">
+        <table class="table ">
+            <thead style="background-color: #17a2b8;">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Organizer)
+                </th>
+                <th>
+                    NumberOfRegistrations
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaximumRegistrations)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaximumCapacityEvent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OpenForRegistrations)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventPrice)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) {
+            <tr class="text-light">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Organizer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Registrations.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaximumRegistrations)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaximumCapacityEvent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpenForRegistrations)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventPrice)
+                </td>
+                <td >
+                    <a class="btn btn-outline-light"  asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                    <a class="btn btn-outline-light"  asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+
     </div>
-    <button type="submit" class="btn btn-primary">Upload</button>
-</form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EventType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Organizer)
-            </th>
-            <th>
-                NumberOfRegistrations
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaximumRegistrations)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaximumCapacityEvent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpenForRegistrations)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EventPrice)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Organizer.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Registrations.Count)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaximumRegistrations)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaximumCapacityEvent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OpenForRegistrations)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventPrice)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+</div>
